@@ -9,7 +9,7 @@ server.bind((host, port))
 server.listen()
 
 clients = []
-clients_names = []
+nicknames = []
 
 def broadcast(message):
 	for client in clients:
@@ -22,7 +22,12 @@ def handle(client):
 			broadcast(message)
 		except:
 			index = clients.index(client)
-			
+			clients.remove(client)
+			client.close()
+			nickname = nicknames[index]
+			broadcast(f'{nickname} has lest the chatroom')
+			nicknames.remove(nickname)
+			break
 
 
 
