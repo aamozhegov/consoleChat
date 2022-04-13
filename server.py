@@ -29,5 +29,14 @@ def handle(client):
 			nicknames.remove(nickname)
 			break
 
-
+def receive():
+	while True:
+		client, address = server.accept()
+		print(f'Connected with {str(address)}')
+		client.send('NICK'.encode('ascii'))
+		nickname = client.recv(1024).decode('ascii')
+		nicknames.append(nickname)
+		clients.append(client)
+		print(f'Nickname of the client is {nickname}!')
+		broadcast(f'{nickname} joined the chatroom!'.encode('ascii'))
 
