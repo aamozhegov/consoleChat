@@ -22,7 +22,8 @@ def receive():
 
 def write():
 	while True:
-		message = f'{nickname}: {input('')}'
+		message = f'{nickname}: {input("")}'
+		#f"Hello, {name}. You are {age}."
 		client.send(message.encode('encode'))
 
 write_thread = threading.Thread(target = receive)
