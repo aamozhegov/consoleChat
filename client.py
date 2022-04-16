@@ -19,3 +19,14 @@ def receive():
 			print('Some error occurred')
 			client.close()
 			break
+
+def write():
+	while True:
+		message = f'{nickname}: {input('')}'
+		client.send(message.encode('encode'))
+
+write_thread = threading.Thread(target = receive)
+write_thread.start()
+
+
+
