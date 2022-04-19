@@ -5,7 +5,7 @@ host = '192.168.100.4'
 port = 9009
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((host, port))
+server.bind(host, port)
 server.listen()
 
 clients = []
@@ -25,7 +25,7 @@ def handle(client):
 			clients.remove(client)
 			client.close()
 			nickname = nicknames[index]
-			broadcast(f'{nickname} has lest the chatroom')
+			broadcast(f'{nickname} has left the chatroom')
 			nicknames.remove(nickname)
 			break
 
