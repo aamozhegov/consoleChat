@@ -5,7 +5,7 @@ host = '192.168.100.4'
 port = 9009
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(host, port)
+server.bind((host, port))
 server.listen()
 
 clients = []
